@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667136908623",
+    "project_id": "uciclibrary",
+    "storage_bucket": "uciclibrary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667136908623:android:4f96ad4e82b1d6c246b93a",
+        "android_client_info": {
+          "package_name": "com.salman.libraryucic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYdeoPYFz_sNq2VYMKbsJL34glJDMhREo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
