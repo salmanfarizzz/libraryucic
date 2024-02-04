@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:libraryucic/models/book_model.dart';
 import '../../shared/theme.dart';
 
 class BookTile extends StatelessWidget {
-  final String name;
-  final String author;
-  final String imageUrl;
-  final String rating;
+  final BookModel book;
 
-  const BookTile({
-    Key? key, 
-    required this.name,
-    required this.author, 
-    required this.imageUrl,
-    required this.rating,
+  const BookTile(
+    this.book, {
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -32,8 +27,8 @@ class BookTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    imageUrl,
+                  image: NetworkImage(
+                    book.imageUrl,
                   ),
                 ),
               ),
@@ -43,7 +38,7 @@ class BookTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    book.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -53,7 +48,7 @@ class BookTile extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    author,
+                    book.author,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),
@@ -78,7 +73,7 @@ class BookTile extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  rating.toString(),
+                  book.rating.toString(),
                   style: blackTextStyle.copyWith(
                     fontWeight: medium,
                   ),

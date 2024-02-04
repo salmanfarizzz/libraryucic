@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:libraryucic/cubit/auth_cubit.dart';
+import 'package:libraryucic/cubit/book_cubit.dart';
 import 'package:libraryucic/cubit/page_cubit.dart';
 import 'package:libraryucic/ui/pages/detail_pages.dart';
 import 'package:libraryucic/ui/pages/getStarted_page.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
+        BlocProvider(
+      create: (context) => BookCubit(), 
+      ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:libraryucic/ui/pages/read_page.dart';
+// import 'package:libraryucic/ui/pages/read_page.dart';
 import '../../shared/theme.dart';
 import '../../models/book_model.dart';
 import '../widgets/custom_button.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_pdfview/flutter_pdfview.dart';
+
 // import '../widgets/information_item.dart';
 // import 'package:libraryucic/ui/widgets/photo_item.dart';
 
@@ -151,130 +156,85 @@ class DetailPage extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    'menjelaskan tentang filsafat Yunani-Romawi kuno yang bisa membantu Anda mengatasi emosi negatif dan menghasilkan mental yang tangguh dalam menghadapi masalah hidup.',
+                    book.description,
                     style: blackTextStyle.copyWith(
                       height: 2,
                     ),
                   ),
 
                   // NOTE: PHOTOS
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Text(
-                  //   'Photos',
-                  //   style: blackTextStyle.copyWith(
-                  //     fontSize: 16,
-                  //     fontWeight: semiBold,
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 6,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     PhotoItem(
-                  //       imageUrl: 'assets/image_photo1.png',
-                  //     ),
-                  //     PhotoItem(
-                  //       imageUrl: 'assets/image_photo2.png',
-                  //     ),
-                  //     PhotoItem(
-                  //       imageUrl: 'assets/image_photo3.png',
-                  //     ),
-                  //   ],
-                  // ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Penerbit',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        book.publisher,
+                        style: blackTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: regular,
+                        ),
+                      ),
+                    ],
+                  ),
 
-                  // NOTE: INTERESTS
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Text(
-                  //   'Interests',
-                  //   style: blackTextStyle.copyWith(
-                  //     fontSize: 16,
-                  //     fontWeight: semiBold,
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 6,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     InformationItem(
-                  //       text: 'Kids Park',
-                  //     ),
-                  //     InformationItem(
-                  //       text: 'Honor Bridge',
-                  //     ),
-                  //   ],
-                  // ),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     InformationItem(
-                  //       text: 'City Museum',
-                  //     ),
-                  //     InformationItem(
-                  //       text: 'Central Mall',
-                  //     ),
-                  //   ],
-                  // ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'Tahun Terbit',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        book.publicationYear.toString(),
+                        style: blackTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: regular,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
 
-            // NOTE: PRICE & BOOK BUTTON
+            // NOTE: READ BUTTON
             Container(
               width: 200,
-              margin: EdgeInsets.symmetric(vertical: 30),
+              margin: EdgeInsets.symmetric(vertical: 20),
               child: Row(
                 children: [
-                  // NOTE: PRICE
-                  // Expanded(
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Text(
-                  //         NumberFormat.currency(
-                  //           locale: 'id',
-                  //           symbol: 'IDR ',
-                  //           decimalDigits: 0,
-                  //         ).format(book.price),
-                  //         style: blackTextStyle.copyWith(
-                  //           fontSize: 18,
-                  //           fontWeight: medium,
-                  //         ),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 5,
-                  //       ),
-                  //       Text(
-                  //         'per orang',
-                  //         style: greyTextStyle.copyWith(
-                  //           fontWeight: light,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-
-                  // NOTE: BOOK BUTTON
                   CustomButton(
-                    title: 'Pinjam',
+                    title: 'Baca Sekarang',
                     onPressed: () {
-                      var code = 
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => ReadPage(book),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReadPage(book: book,),
+                        ),
+                      );
                     },
                     width: 170,
                   ),
+
                 ],
               ),
             ),
@@ -284,11 +244,16 @@ class DetailPage extends StatelessWidget {
     }
 
     return Scaffold(
-        backgroundColor: kBackgroundColor,
-        body: Stack(children: [
-          backgroundImage(),
-          customShadow(),
-          content(),
-        ]));
+      backgroundColor: kBackgroundColor,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            backgroundImage(),
+            customShadow(),
+            content(),
+          ],
+        ),
+      ),
+    );
   }
 }

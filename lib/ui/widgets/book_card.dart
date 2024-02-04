@@ -4,19 +4,16 @@ import 'package:libraryucic/ui/pages/detail_pages.dart';
 import '../../shared/theme.dart';
 
 class BookCard extends StatelessWidget {
-  final String name;
-  final String author;
-  final String imageUrl;
-  final String rating;
+  // final String name;
+  // final String author;
+  // final String imageUrl;
+  // final String rating;
   // final String book;
-
-  const BookCard({
+  final BookModel book;
+  
+  const BookCard(this.book, {
     Key? key,
-    required this.name,
-    required this.author,
-    required this.imageUrl,
-    required this.rating,
-  }) : super(key: key);
+    }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +47,8 @@ class BookCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
-                    image: AssetImage(
-                  imageUrl,
+                    image: NetworkImage(
+                  book.imageUrl,
                 )),
               ),
               child: Align(
@@ -82,7 +79,7 @@ class BookCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        rating.toString(),
+                        book.rating.toString(),
                         style: blackTextStyle.copyWith(
                           fontWeight: medium,
                         ),
@@ -98,7 +95,7 @@ class BookCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    book.name,
                     style: blackTextStyle.copyWith(
                       fontWeight: medium,
                       fontSize: 18,
@@ -108,7 +105,7 @@ class BookCard extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    author,
+                    book.author,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),

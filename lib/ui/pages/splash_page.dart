@@ -41,13 +41,13 @@ class _SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 100,
-                height: 100,
+                width: 150,
+                height: 150,
                 margin: EdgeInsets.only(bottom: 50),
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
-                      'assets/icon_logo.png',
+                      'assets/icon_logo1.png',
                     ),
                   ),
                 ),

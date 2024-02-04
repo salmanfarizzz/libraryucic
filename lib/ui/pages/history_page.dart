@@ -70,31 +70,10 @@ class HistoryPage extends StatelessWidget {
         ),
       );
     }
-
-    Widget ButtonPinjam() {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: 16),
-            CustomButton(
-              title: 'Baca Sekarang',
-              onPressed: () {
-                
-              },
-              width: 220,
-            ),
-          ],
-        ),
-      );
-    }
-
-
     return ListView(
       children: [
         header(),
         HistoryBooks(),
-        ButtonPinjam(),
       ],
     );
     // return MaterialApp(
